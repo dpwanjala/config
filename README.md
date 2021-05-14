@@ -1,2 +1,2 @@
 # config
-provisioning configurations and apps for environments
+Provisioning configurations and apps for environments
