@@ -1,0 +1,4 @@
+- name: Start service docker, if not started
+  ansible.builtin.service:
+    name: docker
+    state: started

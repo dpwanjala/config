@@ -1,0 +1,6 @@
+- name: setup environment
+  hosts: localhost
+  become: yes
+
+  roles:
+    - docker

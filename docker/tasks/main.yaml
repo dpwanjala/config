@@ -1,0 +1,12 @@
+---
+- name: ensure required directories are present
+  include: dirs.yaml
+
+- name: install docker
+  include: install.yaml
+
+- name: configure newly install application
+  include: config.yaml
+
+- name: start, restart or reload service
+  include: service.yaml

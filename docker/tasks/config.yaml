@@ -1,0 +1,14 @@
+---
+# add user to docker group
+- name: add {{ USER }} with a bash shell, to'docker' groups
+  ansible.builtin.user:
+    name: '{{ USER }}'
+    shell: /bin/bash
+    groups: docker
+    append: yes
+
+# config service to start on restart
+- name: Enable service docker, and not touch the state
+  ansible.builtin.service:
+    name: docker
+    enabled: yes
