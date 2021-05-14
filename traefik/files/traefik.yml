@@ -1,0 +1,20 @@
+api:
+  dashboard: true
+
+entryPoints:
+  web:
+    address: ":80"
+  websecure:
+    address: ":443"
+
+providers:
+  docker:
+    network: web
+
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: example@gmail.com
+      storage: /letsencrypt/acme.json
+      httpChallenge:
+        entryPoint: http

@@ -1,0 +1,39 @@
+version: "3.3"
+
+networks:
+  web:
+    external: true
+
+services:
+
+  traefik:
+    image: "traefik:${TRAEFIK_VERSION}"
+    container_name: "traefik"
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      # create a global redirect to https for all services
+      # - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      # - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      # - "--entrypoints.web.http.redirections.entrypoint.permanent=true"
+      # Traefik will listen to incoming request on the port 443 (https)
+      - "--entrypoints.websecure.address=:443"
+      # Enable a tls challenge named "myresolver"
+      # - "--certificatesresolvers.letsencrypt.acme.tlschallenge=true"
+      #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
+      # - "--certificatesresolvers.letsencrypt.acme.email=dpwanjala@gmail.com"
+      # Tell to store the certificate on a path under our volume
+      # - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80" #web
+      - "443:443" #websecure
+      - "8080:8080" #Docker sends requests on port 443 to Traefik on port 443
+    networks:
+      - web
+    volumes:
+      # Create a letsencrypt dir within the folder where the docker-compose file is to store our certificates
+      - "./letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
