@@ -1,0 +1,6 @@
+---
+  PHPMYADMIN_DOMAIN: localhost
+  PMA_HOST: 143.244.180.168:3306
+  PMA_USER: root
+  PMA_PASSWORD: mysql_root_pwd
+  INSTALLATION_FOLDER: /srv

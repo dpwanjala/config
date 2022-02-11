@@ -2,5 +2,4 @@
   DOMAIN: localhost
   EMAIL: example@gmail.com
   TRAEFIK_VERSION: latest
-  USER: root
   APP_NAME: traefik

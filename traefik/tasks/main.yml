@@ -2,15 +2,15 @@
   file:
     path: /srv/traefik/
     state: directory
-    owner: '{{ USER }}'
-    group: '{{ USER }}'
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
 
 - name: copy docker-compose.yml to traefik directory
   ansible.builtin.copy:
     src: docker-compose.yml
     dest: /srv/traefik/docker-compose.yml
-    owner: '{{ USER }}'
-    group: '{{ USER }}'
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
 
 - name: ensure docker web network is created
   shell: docker network create web
@@ -20,8 +20,8 @@
   ansible.builtin.template:
     src: .env.j2
     dest: /srv/traefik/.env
-    owner: '{{ USER }}'
-    group: '{{ USER }}'
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
 
 - name: run docker-compose up -d with .env in traefik folder
   shell: docker-compose --env-file /srv/traefik/.env up -d

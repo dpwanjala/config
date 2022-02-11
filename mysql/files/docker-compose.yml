@@ -1,0 +1,28 @@
+version: "3.3"
+
+# networks:
+#   web:
+#     external: true
+
+services:
+  mysql:
+    image: ${IMAGE}
+    volumes:
+      - ${INSTALLATION_FOLDER}/mysql/db_data:/var/lib/mysql
+      # - ${INSTALLATION_FOLDER}/mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3306:3306
+    # networks:
+    #   - web
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.${APP_NAME}.rule=Host(`${DOMAIN}`)"
+    #   - "traefik.http.routers.${APP_NAME}.entrypoints=web"
+    #   - "traefik.docker.network=web"
+    #   - "traefik.http.services.${APP_NAME}.loadbalancer.server.port=${PORT}"

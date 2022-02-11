@@ -1,10 +1,9 @@
 - name: setup environment
-  hosts: digitalocean001
+  hosts: localhost
   become: yes
 
   roles:
     # - user
     # - docker
     # - docker-compose
-    # - traefik
-    - mysql
+    - phpmyadmin

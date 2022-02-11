@@ -1,0 +1,10 @@
+---
+  INSTALLATION_FOLDER: /srv
+  IMAGE: mysql:5.7
+  APP_NAME: mysql
+  PORT: 3306
+  MYSQL_ROOT_PASSWORD: mysql_root_pwd
+  MYSQL_DATABASE: mysql_db
+  MYSQL_USER: mysql_user
+  MYSQL_PASSWORD: mysql_pwd
+    

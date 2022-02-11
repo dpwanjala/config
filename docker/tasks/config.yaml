@@ -1,8 +1,8 @@
 ---
 # add user to docker group
-- name: add {{ USER }} with a bash shell, to'docker' groups
+- name: add {{ ansible_user }} with a bash shell, to'docker' groups
   ansible.builtin.user:
-    name: '{{ USER }}'
+    name: '{{ ansible_user }}'
     shell: /bin/bash
     groups: docker
     append: yes

@@ -1,0 +1,23 @@
+version: '3.4'
+
+# networks:
+#   web:
+#     external: true
+
+services:
+  phpmyadmin:
+    image: ${IMAGE}
+    environment:
+      PMA_HOST: ${PMA_HOST}
+      PMA_USER: ${PMA_USER}
+      PMA_PASSWORD: ${PMA_PASSWORD}
+    ports:
+      - 8080:80
+    # networks:
+    #   - web
+    # labels:
+    #   - "traefik.enable=true"
+    #   - "traefik.http.routers.$APP_NAME.rule=Host(`$PHPMYADMIN_DOMAIN`)"
+    #   - "traefik.http.routers.$APP_NAME.entrypoints=web"
+    #   - "traefik.docker.network=web"
+    #   - "traefik.http.services.$APP_NAME.loadbalancer.server.port=80"

@@ -1,0 +1,32 @@
+- name: ensure installation and db folder {{ INSTALLATION_FOLDER }}/mysql directory exists
+  file:
+    path: '{{ INSTALLATION_FOLDER }}/mysql/db_data'
+    state: directory
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+
+- name: copy docker-compose.yml to mysql directory
+  ansible.builtin.copy:
+    src: docker-compose.yml
+    dest: '{{ INSTALLATION_FOLDER }}/mysql/docker-compose.yml'
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+
+- name: template .env to mysql folder
+  ansible.builtin.template:
+    src: .env.j2
+    dest: '{{ INSTALLATION_FOLDER }}/mysql/.env'
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+
+- name: template mysqld.cnf to mysql folder
+  ansible.builtin.template:
+    src: mysqld.cnf.j2
+    dest: '{{ INSTALLATION_FOLDER }}/mysql/mysqld.cnf'
+    owner: '{{ ansible_user }}'
+    group: '{{ ansible_user }}'
+
+- name: run docker-compose up -d with .env in mysql folder
+  shell: docker-compose --env-file .env up -d
+  args:
+    chdir: '{{ INSTALLATION_FOLDER }}/mysql/'

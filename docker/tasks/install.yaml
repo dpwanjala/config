@@ -1,14 +1,14 @@
 ---
-# - name: Ensure older version of docker docker-engine docker.io containerd runc are removed
-#   apt:
-#     name: "{{ item }}"
-#     state: absent
-#     update_cache: yes
-#   loop:
-#      - docker
-#      - docker-engine
-#      - containerd
-#      - runc
+- name: Ensure older version of docker docker-engine docker.io containerd runc are removed
+  apt:
+    name: "{{ item }}"
+    state: absent
+    update_cache: yes
+  loop:
+     - docker
+     - docker-engine
+     - containerd
+     - runc
 
 - name: Ensure apt-transport-https, ca-certificates, curl, gnupg and lsb-release are installed
   apt:

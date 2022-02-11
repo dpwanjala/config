@@ -34,6 +34,6 @@ services:
     networks:
       - web
     volumes:
-      # Create a letsencrypt dir within the folder where the docker-compose file is to store our certificates
+      # create a letsencrypt dir within the folder where the docker-compose file is to store our certificates
       - "./letsencrypt:/letsencrypt"
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
