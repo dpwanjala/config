@@ -7,4 +7,5 @@
     # - docker
     # - docker-compose
     # - traefik
-    - mysql
+    # - mysql
+    - phpmyadmin
