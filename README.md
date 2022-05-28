@@ -1,6 +1,23 @@
 
 # introduction
-config is a collection of provisioning configurations and tools
+
+Config is an aggregation of useful software development tools, configuration and provisioning files that can be configured to run on different environments. Each of the config includes configurations for popular
+ochestration tools and runtime environments as noted below:
+
+1) ansible role
+2) docker-compose service
+
+It creates by default an installation folder, called services in the current users home directory. This path can be change by changing the INSTALLATION_FOLDER variable for ansible
+roles.
+
+# hosts.yml
+here you include the information about the server you want to run chosen services
+
+# traefik
+start traefik for networking other services
+
+# phpmyadmin
+connect to and manage sql databases
 
 # ansible
 control node requirements
@@ -53,3 +70,6 @@ $ docker build -t node-server .
 $ docker run -d --name nodongo -p 3000:3000 node-server
 $ docker tag node-server lightninglife/nodejs-starter
 $ docker push zarakmughal/nodejs-starter:1.1
+
+
+
